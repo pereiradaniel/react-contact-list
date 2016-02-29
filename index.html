@@ -7,5 +7,20 @@
 	</head>
 	
 	<body>
+		<div id="react-mount"></div>
+		<script type="text/babel">
+			var Test = React.createClass({
+				render: function() {
+					return(
+						<h1>#Test component</h1>
+					)
+				}
+			});
+
+			ReactDOM.render(
+				<Test />,
+				document.getElementById('react-mount')
+			);
+		</script>
 	</body>
 </html>
