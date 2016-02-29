@@ -9,30 +9,43 @@
 	<body>
 		<div id="react-mount"></div>
 		<script type="text/babel">
-			var Test = React.createClass({
+			var Hello = React.createClass({
 				
 				getDefaultProps: function() {
 					return {
-						propTest: "Default propTest value"
+						name: "Default"
 					}
 				},
 
 				propTypes: {
-					propTest: React.PropTypes.string.isRequired
+					name: React.PropTypes.string.isRequired,
+					isPerson: React.PropTypes.bool
 				},
 				
 				render: function() {
+					var greeting = "World";
+					if(this.props.isPerson) {
+						greeting = (<Person name={this.props.name} />)
+					}
 					return(
 						<div>
-							<h1>#Test component</h1>,
-							<h3>{this.props.propTest}</h3>
+							<h1>Hello {greeting}</h1>
 						</div>
 					)
 				}
 			});
 
+			var Person = React.createClass({
+
+				render: function() {
+					return(
+						<span>{this.props.name}</span>
+					)
+				}
+			})
+
 			ReactDOM.render(
-				<Test />,
+				<Hello name="Name" isPerson={true}/>,
 				document.getElementById('react-mount')
 			);
 		</script>
