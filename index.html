@@ -10,9 +10,23 @@
 		<div id="react-mount"></div>
 		<script type="text/babel">
 			var Test = React.createClass({
+				
+				getDefaultProps: function() {
+					return {
+						propTest: "Default propTest value"
+					}
+				},
+
+				propTypes: {
+					propTest: React.PropTypes.string.isRequired
+				},
+				
 				render: function() {
 					return(
-						<h1>#Test component</h1>
+						<div>
+							<h1>#Test component</h1>,
+							<h3>{this.props.propTest}</h3>
+						</div>
 					)
 				}
 			});
